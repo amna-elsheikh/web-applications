@@ -1,0 +1,33 @@
+<section class="popup-form">
+  <button routerLink="/invoices" class="close-btn">X</button>
+  <form [formGroup]="invoiceForm" (ngSubmit)="submit()" class="form" id="invoiceForm">
+
+        <h2 class="form-heading">{{title}}</h2>
+
+        <div class="customer-name-select" >
+          <!-- <div class="customer-name-select" > -->
+          <label for="customerId">Customer Name</label>
+          <select required formControlName="CustomerID">
+            <!-- formControlName="customerId" -->
+            <option disabled>Choose Value</option>
+            <option *ngFor="let customer of customers" [ngValue]="customer" >
+              <!-- {{customer.CustomerID.customerId}} -->
+              {{customer.companyName}}
+            </option>
+          </select>
+        </div>
+        <div class="amount-select">
+          <label for="amount">Amount</label>
+          <input type="number" id="amount" name="Amount" value="" min="0" required formControlName="Amount" />
+        </div>
+        <div class="invoice-date-select">
+          <label for="invoice-date">Invoice Date</label>
+          <input type="date" id="invoice-date" name="InvoiceDate" value="" required formControlName="InvoiceDate" />
+        </div>
+        <div class="duedate-select">
+          <label for="due-date">Due Date</label><br />
+          <input type="date" id="due-date" name="DueDate" value="" required formControlName="DueDate" />
+        </div>
+        <button class="plus-btn" type="submit">{{button}}</button>
+  </form>
+</section>

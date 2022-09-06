@@ -1,0 +1,97 @@
+<section class="popup-form">
+  <button (click)="closeForm()" class="close-btn">X</button>
+  <form [formGroup]="paymentForm" (ngSubmit)="submit()" class="form" action="">
+    <h2 class="form-heading">Add a new payment</h2>
+    <input name="paymentId" id="payment-id" hidden="true" type="hidden" value="" formControlName="paymentId" />
+    <div class="customer-name-select" >
+      <!-- <div class="customer-name-select" > -->
+      <label for="InvoiceNo">InvoiceNo</label>
+      <select required formControlName="InvoiceID">
+        <!-- formControlName="customerId" -->
+        <option disabled>Choose Value</option>
+        <option *ngFor="let Invoice of Invoice" [ngValue]="Invoice" >
+          <!-- {{customer.CustomerID.customerId}} -->
+          {{Invoice.InvoiceNo}}
+        </option>
+      </select>
+    </div>
+    <div class="amount-select">
+      <label for="amount">Amount</label>
+      <input type="number" id="amount" name="Amount" value="" min="0" required formControlName="Amount" />
+    </div>
+    <div class="payment-date-select">
+      <label for="payment-date">Payment Date</label><br />
+      <input type="date" id="payment-date" name="PaymentDate" required formControlName="PaymentDate" />
+    </div>
+    <div class="payment-mode-select">
+      <label for="payment-mode">Payment Mode</label><br />
+      <select formControlName="PaymentMode" id="payment-mode" name="paymentMode"
+       required (change)="onChange($event)">
+
+        <option disabled>Choose Value paymentMode</option>
+        <option >Choose paymentMode</option>
+        <!-- value={{modes.paymentMode}}
+        [ngValue]="mode.paymentMode"   -->
+        <option *ngFor="let mode of modes"  [ngValue]="mode.paymentMode"   >
+          {{mode.paymentMode}}
+        </option>
+
+      </select>
+
+
+      <!-- formControlName='ChequeId' -->
+      <!-- <div class="moreDetails" *ngIf="selectedType =='Cheque'" >
+        <div class="chequeNo-select">
+          <label for="chequeNo">Cheque No</label><br />
+          <input type="number" id="chequeNo" name="ChequeNo" formControlName='ChequeId' min="0"  required />
+        </div>
+      </div> -->
+        <!--  <div class="moreDetails" *ngIf="selectedType ==='Cheque' "formGroupName='ChequeId'>
+        <div class="chequeNo-select">
+          <label for="chequeNo">Cheque No</label><br />
+          <input type="number" id="chequeNo" name="ChequeNo" formControlName="ChequeNo" min="0" required />
+        </div>
+        <div class="drawer-select">
+          <label for="drawer">Drawer</label>
+          <input type="text" name="drawer" id="drawer" formControlName="drawer" required />
+        </div>
+        <div class="bank-select">
+          <label for="bankName">Drawer Bank</label><br />
+          <select id="bank-name" name="bankName" required>
+            <option disabled>Choose Value bankName</option>
+            <option value="bankName">Choose bankName</option>
+
+            <option *ngFor="let bank of bank">
+              {{bank.bankName}}
+            </option>
+          </select>
+        </div>
+         <div class="bank-status-select">
+          <label for="status">Status</label><br />
+          <select id="status" name="status" required>
+            <option value="Awaiting">Awaiting</option>
+            <option value="Deposited">Deposited</option>
+            <option value="Cashed">Cashed</option>
+            <option value="Returned">Returned</option>
+          </select>
+        </div>
+        <div class="received-date-select">
+          <label for="received-date">Received Date</label><br />
+          <input formControlName="receivedDate" type="date" id="received-date" name="receivedDate" required />
+        </div>
+        <div class="due-date-select">
+          <label for="due-date">Due Date</label><br />
+          <input formControlName="DueDate" type="date" id="due-date" name="DueDate" required />
+        </div>
+       <div class="cheque-image-select">
+          <label for="chequeImageUri">Cheque Image</label>
+          <input formControlName="chequeImageUri" type="file" id="cheque-image" name="chequeImageUri" accept="image/*">
+          <span id="chequeImageName"></span>
+        </div>
+      </div>-->
+
+    </div>
+
+    <button class="plus-btn" type="submit">Add Payment</button>
+  </form>
+</section>

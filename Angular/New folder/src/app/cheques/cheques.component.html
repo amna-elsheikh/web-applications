@@ -1,0 +1,71 @@
+
+
+        <main class="container">
+            <section class="header">
+                <h1 class="header-title">Cheques</h1>
+                <div class="count-card">
+                    <div class="icon-bg">
+                        <!-- <img src="img/money-bill-1-wave.svg" alt="" /> -->
+                    </div>
+                    <p class="counter">
+                        120 <span class="counter-desc">Total Cheques</span>
+                    </p>
+                </div>
+            </section>
+            <section class="function">
+                <form class="status-report">
+                    <div class="status-select">
+                        <label for="status">Status: </label>
+                        <select name="status" id="status">
+                            <option value="All">All</option>
+                            <option value="Awaiting">Awaiting</option>
+                            <option value="Deposited">Deposited</option>
+                            <option value="Cashed">Cashed</option>
+                            <option value="Returned">Returned</option>
+                        </select>
+                    </div>
+                    <div class="from-date-box">
+                        <label for="from-date">From Date:</label>
+                        <input type="date" id="from-date" name="fromDate" required />
+                    </div>
+                    <div class="to-date-box">
+                        <label for="to-date">To Date:</label>
+                        <input type="date" id="to-date" name="toDate" required/>
+                    </div>
+                    <button type="submit" class="submit-btn">Submit</button>
+                </form>
+            </section>
+            <section class="summary">
+              <div class="table-header">
+                  <h1 class="table-title">Cheque Report</h1>
+              </div>
+              <table class="table">
+                <tr class="table-headings">
+                  <th>Cheque No</th>
+                  <th>Amount</th>
+                  <th>Drawer</th>
+                  <th>Bank Name</th>
+                  <th>Status</th>
+                  <th>Received Date</th>
+                  <th>Due Date</th>
+                  <th></th>
+              </tr>
+              <tr *ngFor="let cheque of cheques ">
+                <td>{{cheque.ChequeNo}}</td>
+                <td>{{cheque.Amount}}</td>
+                <td>{{cheque.drawer}}</td>
+                <td>{{cheque.bankId.bankName}} </td>
+                <td>{{cheque.status}}</td>
+                <td>{{formatDate(cheque.receivedDate)}}</td>
+                <td>{{formatDate(cheque.DueDate)}}</td>
+
+                <td class=editing-btns>
+                  <button *ngIf="this.imageURL" (click)="openNewTab(cheque.chequeImageUri)">View Cheque</button>
+
+                </td>
+              </tr>
+
+              </table>
+          </section>
+        </main>
+
