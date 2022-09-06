@@ -1,0 +1,69 @@
+
+    <main class="container">
+      <section class="header">
+        <h1 class="header-title">Payments</h1>
+      </section>
+      <section class="paymentsinfo">
+        <div class="invoiceinfo"></div>
+        <div class="custinfo"></div>
+      </section>
+      <section class="function">
+        <form class="search">
+          <input
+            type="text"
+            placeholder="Search for payments..."
+            name="paymentId"
+            class="search-box"
+            [(ngModel)]="paymentId"
+          />
+          <button type="submit" class="search-btn" (click)="search()">
+            Search
+          </button>
+        </form>
+        <button class="add-btn" (click)="paymentForm()">+ new payment</button>
+      </section>
+
+      <section class="summary">
+        <div class="table-header">
+          <h1 class="table-title">Payments Summary</h1>
+        </div>
+        <table class="table">
+          <tr class="table-headings">
+            <th>Payment ID</th>
+            <th>Invoice No.</th>
+            <th>Amount</th>
+            <th>Payment Date</th>
+            <th>Payment Mode</th>
+            <th>Cheque No.</th>
+            <th></th>
+          </tr>
+          <tr *ngFor="let payment of payments">
+            <td>{{ payment.paymentId }}</td>
+            <!-- <td>{{ payment.InvoiceID.InvoiceNo }}</td> -->
+            <td>{{ payment.Amount }}</td>
+            <td>{{ formatDate(payment.PaymentDate) }}</td>
+            <td>{{ payment.PaymentMode }}</td>
+             <span>
+              <td
+                (click)="openNewTab(payment.ChequeId.chequeImageUri)"
+                [hidden]="!payment.ChequeId"
+              >
+                {{ cheque(payment.ChequeId) }}
+                <button>chequeImageUri</button>
+              </td>
+            </span>
+            <td class="editing-btns">
+              <button (click)="deletepayment(payment.paymentId)">Delete</button>
+               <button
+                routerLink="/payments/invoice/{{
+                  payment.InvoiceID.InvoiceNo
+                }}/payment-form/{{ payment.paymentId }}"
+              >
+                update
+              </button>
+              <!-- <button  [hidden]="!payment.ChequeId" (click)="openNewTab(payment.ChequeId.chequeImageUri)">chequeImageUri</button> -->
+            </td>
+          </tr>
+        </table>
+      </section>
+    </main>

@@ -1,0 +1,64 @@
+<section class="popup-form">
+  <button routerLink="/deposits" class="close-btn">X</button>
+  <form [formGroup]="depositsForm" (ngSubmit)="submit()" class="form">
+    <h2 class="form-heading">Add a new cheque deposit</h2>
+
+    <div class="bank-account-select">
+      <label for="bank-account-no">Bank Account</label><br />
+      <select formControlName="bankAccountNo" id="bank-account-no" name="bankAccountNo" required>
+        <option disabled>Choose Value</option>
+        <option value="accountNo">Choose bankAcounts</option>
+        <option *ngFor="let bankAcount of bankAcounts" [ngValue]="bankAcount">
+          {{bankAcount.accountNo}} {{bankAcount.bankId.bankName}}
+        </option>
+      </select>
+
+    </div>
+    <div class="deposit-date-select">
+      <label for="deposit-date">Deposit Date</label><br />
+      <input formControlName="depositDate" type="date" id="deposit-date" name="depositDate" required />
+    </div>
+    <div class="status-select">
+      <label for="deposit-status">Deposit Status</label><br />
+      <select formControlName="depositStatus" id="deposit-status" name="status">
+        <option value="accountNo">Choose bankAcounts</option>
+        <option *ngFor="let statu of statu" value={{statu}} >{{statu}}</option>
+        <!-- <option  value="">Cashed with Returns</option>
+              <option    value="">Returned</option> -->
+
+
+      </select>
+    </div>
+    <div class="cheques-select"></div>
+    <table class="table">
+      <tr class="table-headings">
+        <th>Cheque No</th>
+        <th>Amount</th>
+        <th>Status</th>
+        <th>Due Date</th>
+        <th>Include? </th>
+        <th></th>
+      </tr>
+      <!-- <tr *ngFor="let cheque of cheques "  [(ngModel)]="date" > -->
+      <tr *ngFor="let cheque of cheques  | status: status" >
+
+        <td>{{cheque.ChequeNo}}</td>
+        <td>{{cheque.Amount}}</td>
+        <td>{{cheque.status }}</td>
+        <td>
+          {{formatDate(cheque.DueDate)}}
+          <h5> {{dateDifference(formatDate(cheque.DueDate))}}</h5>
+        </td>
+
+        <td class=editing-btns >
+          <!-- <input type="checkbox" value="{{cheque.ChequeNo}}" name="{{cheque.ChequeNo}}" formArrayName="chequeNos" (change)="onchange()" [(ngModel)]="cheque.ChequeNo"> -->
+
+          <input [value]=cheque.ChequeNo name={{cheque.ChequeNo}} type="checkbox" (change)="onchange($event)" >
+        </td>
+      </tr>
+
+    </table>
+
+    <button class="plus-btn" type="submit">Add Deposit</button>
+  </form>
+</section>

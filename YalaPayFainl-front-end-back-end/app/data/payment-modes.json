@@ -1,0 +1,8 @@
+[
+  {
+    "paymentMode":"Bank transfer"},
+  {
+    "paymentMode":"Credit card"},
+  {
+    "paymentMode":"Cheque"}
+]

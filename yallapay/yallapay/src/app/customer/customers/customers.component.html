@@ -1,0 +1,120 @@
+<!--
+  <main class="container">
+
+    <section class="header">
+      <h1 class="header-title">Customers</h1>
+      <div class="count-card">
+
+        <p class="counter">
+          125 <span class="counter-desc">Total Customers</span>
+        </p>
+      </div>
+    </section>
+    <section class="function">
+      <form action="" class="search">
+        <input type="text" placeholder="Search for customers..." class="search-box" name="companyName"
+          [(ngModel)]="companyName" />
+        <button type="submit" class="search-btn" (click)="search()">
+          Search
+        </button>
+      </form>
+      <button routerLink="/customers/customer-form" class="add-btn">+ new customer</button>
+    </section>
+    <section class="summary">
+      <div class="table-header">
+        <h1 class="table-title">Customers Summary</h1>
+      </div>
+      <table class="table">
+        <tr class="table-headings">
+          <th>Customer ID</th>
+          <th>Company Name</th>
+          <th>Addrees</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Mobile</th>
+          <th> </th>
+        </tr>
+        <tr *ngFor="let customer of customers ">
+          <td>{{customer.customerId}}</td>
+          <td>{{customer.companyName}}</td>
+          <td>{{customer.address.street}}{{customer.address.city}}{{customer.address.country}}</td>
+          <td>{{customer.contactDetails.firstName}} {{customer.contactDetails.lastName}}</td>
+          <td>{{customer.contactDetails.email}}</td>
+          <td>{{customer.contactDetails.mobile}}</td>
+          <td class=editing-btns>
+            <button (click)="deleteCustomer(customer.customerId)">Delete</button>
+            <button routerLink="/customers/customer-form/{{customer.customerId}}">update</button>
+
+      <img class="edit-btn" src="img/pen.svg" onclick="updateCustomer('customer.customerId')"/>
+      <img class="delete-btn" src="img/trash.svg" onclick="deleteCustomer('customer.customerId')"/>
+
+          </td>
+        </tr>
+      </table>
+    </section>
+
+  </main> -->
+
+
+  <main class="container">
+
+    <section class="header">
+      <h1 class="header-title">Customers</h1>
+      <div class="count-card">
+
+        <p class="counter">
+          125 <span class="counter-desc">Total Customers</span>
+        </p>
+      </div>
+    </section>
+    <section class="function">
+      <form action="" class="search">
+        <input type="text" placeholder="Search for customers..." class="search-box" name="companyName"
+          [(ngModel)]="companyName" />
+        <button type="submit" class="search-btn" (click)="search()">
+          Search
+        </button>
+      </form>
+      <button routerLink="/customers/customer-form" class="add-btn">+ new customer</button>
+    </section>
+    <section class="summary">
+      <div class="table-header">
+        <h1 class="table-title">Customers Summary</h1>
+      </div>
+      <table class="table">
+        <tr class="table-headings">
+          <th>Customer ID</th>
+          <th>Company Name</th>
+          <th>Addrees</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Mobile</th>
+          <th> </th>
+        </tr>
+        <tr *ngFor="let customer of customers ">
+          <td>{{customer.customerId}}</td>
+          <td>{{customer.companyName}}</td>
+          <td>{{customer.address.street}}{{customer.address.city}}{{customer.address.country}}</td>
+          <td>{{customer.contactDetails.firstName}} {{customer.contactDetails.lastName}}</td>
+          <td>{{customer.contactDetails.email}}</td>
+          <td>{{customer.contactDetails.mobile}}</td>
+          <td class=editing-btns>
+            <button (click)="deleteCustomer(customer.customerId)">Delete</button>
+            <button routerLink="/customers/customer-form/{{customer.customerId}}">update</button>
+            <!--
+      <img class="edit-btn" src="img/pen.svg" onclick="updateCustomer('customer.customerId')"/>
+      <img class="delete-btn" src="img/trash.svg" onclick="deleteCustomer('customer.customerId')"/>
+   -->
+          </td>
+        </tr>
+      </table>
+    </section>
+
+  </main>
+  <footer>
+    <p class="copyright">
+      ⓒ 2022. G5-Fatma-Hadieh-Shayma rights reserved.
+    </p>
+  </footer>
+
+

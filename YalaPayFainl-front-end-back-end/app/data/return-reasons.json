@@ -1,0 +1,16 @@
+[
+    {"returnedReasons":"No funds/insufficient funds"},
+    {"returnedReasons":"Cheque post-dated, please represent on due date"},
+    {"returnedReasons":"Drawer's signature differs"},
+    {"returnedReasons":"Alteration in date/words/figures requires drawer's full signature"},
+    {"returnedReasons":"Order cheque requires payee's endorsement"},
+    {"returnedReasons":"Not drawn on us"},
+    {"returnedReasons":"Drawer deceased/bankrupt"},
+    {"returnedReasons":"Account closed"},
+    {"returnedReasons":"Stopped by drawer due to cheque lost, bearer's bankruptcy or a judicial order"},
+    {"returnedReasons":"Date/beneficiary name is required"},
+    {"returnedReasons":"Presentment cycle expired"},
+    {"returnedReasons":"Already paid"},
+    {"returnedReasons":"Requires drawer's signature "},
+    {"returnedReasons": "Cheque information and electronic data mismatch"}
+]
